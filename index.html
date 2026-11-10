@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#bd6689" />
+
+    <title>365 Days With You ♡ Azra &amp; Devina</title>
+
+    <meta
+      name="description"
+      content="A little anniversary journey made with love, just for Devina."
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- OPENING SCREEN -->
+    <div class="opening-screen" id="opening">
+      <div class="open-card">
+        <div class="heart">💗</div>
+
+        <p class="subtitle">A little surprise for my favorite girl</p>
+
+        <h1 class="script">Dear Devina...</h1>
+
+        <p class="subtitle">
+          Aku punya sesuatu untuk kamu.
+          <br />
+          Sesuatu yang kubuat khusus dengan sepenuh hati.
+        </p>
+
+        <button class="primary-btn" onclick="openWebsite()" type="button">
+          Open my heart ❤️
+        </button>
+
+        <p style="font-size: 11px; color: #bd91a2; margin-top: 25px">
+          Made with love by Azra
+        </p>
+      </div>
+    </div>
+
+    <main id="website">
+      <!-- BACKGROUND AUDIO -->
+      <audio id="openingAudio" loop preload="auto">
+        <source src="assets/audio/instrumental.mp3" type="audio/mpeg" />
+      </audio>
+
+      <!-- NAVIGATION -->
+      <nav aria-label="Navigasi utama">
+        <a href="#home">Home</a>
+        <a href="#letter">Letter</a>
+        <a href="#memories">Memories</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#song">Our Song</a>
+        <a href="#reasons">Reasons</a>
+        <a href="#secret">Secret</a>
+      </nav>
+
+      <!-- HOME SECTION -->
+      <section class="hero" id="home">
+        <div style="font-size: 40px">🎀 🌷 ❤️</div>
+
+        <p class="section-label">OUR FIRST ANNIVERSARY</p>
+
+        <h1 class="script">365 Days With You</h1>
+
+        <h2 style="font-family: &quot;Playfair Display&quot;; font-size: 20px">
+          Azra
+          <span style="color: #e99ab8">♡</span>
+          Devina
+        </h2>
+
+        <p class="description">
+          One year of laughter, little moments, silly conversations, and a love
+          that I never want to lose.
+        </p>
+
+        <div class="counter-box">
+          <div style="font-size: 11px; letter-spacing: 2px">
+            WE HAVE BEEN TOGETHER FOR
+          </div>
+
+          <div class="counter" id="days">365</div>
+
+          <div style="font-size: 12px; color: #ae8796">
+            beautiful days and counting ♡
+          </div>
+        </div>
+
+        <p style="font-size: 12px; color: #c38da3; margin-top: 35px">
+          Scroll down, sayang. There's more for you &darr;
+        </p>
+      </section>
+
+      <!-- LETTER SECTION -->
+      <section id="letter">
+        <div class="section-label">A LETTER FROM MY HEART</div>
+
+        <h2 class="section-title">For My Dearest Devina</h2>
+
+        <p class="description">
+          A letter that I wish I could say while holding your hand.
+        </p>
+
+        <div class="letter-envelope" id="letterEnvelope">
+          <div class="envelope-art" aria-hidden="true">💌</div>
+
+          <h3
+            style="
+              font-family: &quot;Playfair Display&quot;, serif;
+              color: #bd6689;
+              margin: 8px 0 0;
+            "
+          >
+            A letter sealed with love
+          </h3>
+
+          <p>
+            Ada sesuatu yang ingin aku sampaikan dari hati. Buka surat kecil
+            ini, ya.
+          </p>
+
+          <button
+            class="primary-btn"
+            id="openLetterBtn"
+            onclick="openLoveLetter()"
+            type="button"
+          >
+            Open my letter 💗
+          </button>
+        </div>
+
+        <div class="paper letter-closed" id="loveLetter">
+          <div style="text-align: center; font-size: 25px">💌</div>
+
+          <p>
+            Hai, sayangku, Devina. Aku nggak tahu harus mulai dari mana, tapi
+            aku ingin kamu tahu satu hal: aku bersyukur banget bisa mengenal
+            kamu. Tanggal 11 November 2025 menjadi salah satu tanggal yang akan
+            selalu aku ingat. Hari ketika perjalanan kita dimulai. Terima kasih
+            karena sudah hadir di hidupku. Terima kasih untuk setiap tawa,
+            cerita, perhatian, dan hal-hal kecil yang mungkin terlihat
+            sederhana, tapi berarti besar buat aku. Aku tahu hubungan kita nggak
+            selalu sempurna. Akan ada hari ketika kita berbeda pendapat, lelah,
+            atau mungkin saling nggak mengerti. Tapi aku ingin terus belajar
+            memahami kamu. Aku ingin terus memilih kamu, bukan hanya di hari
+            yang mudah, tapi juga di hari yang sulit. I hope you know how
+            special you are to me. Happy first anniversary, my favorite girl.
+            Semoga ini baru awal dari banyak cerita indah kita. I love you and
+            always love you. ❤️
+          </p>
+
+          <div class="signature">With all my love, Azra</div>
+        </div>
+      </section>
+
+      <!-- MEMORIES SECTION -->
+      <section id="memories">
+        <div class="section-label">OUR LITTLE WORLD</div>
+
+        <h2 class="section-title">Our Memories 📸</h2>
+
+        <p class="description">
+          Potongan-potongan kecil dari cerita kita yang ingin aku simpan
+          selamanya.
+        </p>
+
+        <div class="gallery">
+          <!-- MEMORY PHOTOS -->
+          <div class="memory-card">
+            <img src="assets/images/foto1.jpg" alt="Our first memory" />
+            <p>Our first memory ❤️</p>
+          </div>
+
+          <div class="memory-card">
+            <img src="assets/images/foto2.jpg" alt="My favorite person" />
+            <p>My favorite person</p>
+          </div>
+
+          <div class="memory-card">
+            <img src="assets/images/foto3.jpg" alt="Little moments" />
+            <p>Little moments, big memories</p>
+          </div>
+
+          <div class="memory-card">
+            <img src="assets/images/foto4.jpg" alt="Us together" />
+            <p>Just us, being us</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 35px">
+          <h3 style="color: #bd6689; font-family: &quot;Playfair Display&quot;">
+            A little video about us 🎬
+          </h3>
+
+          <!-- MEMORY VIDEO -->
+          <div class="memory-card" style="max-width: 520px; margin: auto">
+            <video controls playsinline poster="assets/images/foto1.jpg">
+              <source src="assets/videos/video-kita.mp4" type="video/mp4" />
+
+              Browser kamu tidak mendukung video.
+            </video>
+
+            <p>Our little movie ❤️</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIMELINE SECTION -->
+      <section id="timeline">
+        <div class="section-label">HOW IT ALL BEGAN</div>
+
+        <h2 class="section-title">Our Story Together</h2>
+
+        <p class="description">
+          Every chapter with you is my favorite chapter.
+        </p>
+
+        <div class="timeline">
+          <div class="event">
+            <h3>The Beginning 💗</h3>
+
+            <p>
+              November 11, 2025 menjadi hari pertama kita bersama. Awal dari
+              cerita yang nggak pernah aku sangka akan seindah ini. Dari dua
+              orang yang saling mengenal, hingga perlahan menjadi bagian penting
+              dalam kehidupan satu sama lain.
+            </p>
+          </div>
+
+          <div class="event">
+            <h3>Our First Meeting 🦋</h3>
+
+            <p>
+              Setelah sekian banyak cerita dan percakapan, akhirnya pada Januari
+              11, 2026 kita bertemu secara langsung. Hari ketika aku benar-benar
+              melihatmu dihadapanku sebagai pasanganku. Sebuah pertemuan yang
+              akan selalu punya tempat tersendiri di hatiku.
+            </p>
+          </div>
+
+          <div class="event">
+            <h3>Our Longest Time Together 🌻</h3>
+
+            <p>
+              Salah satu hari yang paling ingin aku simpan dalam ingatan.
+              Akhirnya kita punya waktu lebih banyak untuk bersama, bukan hanya
+              beberapa jam. Bisa menikmati waktu bersamamu tanpa harus
+              terburu-buru berpisah adalah kebahagiaan sederhana yang begitu
+              berarti bagiku.
+            </p>
+          </div>
+
+          <div class="event">
+            <h3>Our Little Adventures 🎀</h3>
+
+            <p>
+              Setiap tawa, cerita random, perjalanan kecil, dan momen sederhana
+              yang perlahan menjadi kenangan berharga. Ternyata, hal-hal biasa
+              bisa terasa luar biasa ketika aku menjalaninya bersamamu.
+            </p>
+          </div>
+
+          <div class="event">
+            <h3>The Little Things I Love About You 💌</h3>
+
+            <p>
+              Ada begitu banyak hal kecil tentangmu yang membuatku selalu punya
+              alasan untuk jatuh cinta lagi. Cara kamu tersenyum, tertawa,
+              bercerita, bahkan hal-hal sederhana yang mungkin nggak kamu
+              sadari.
+            </p>
+          </div>
+
+          <div class="event">
+            <h3>One Year With You! 🌷</h3>
+
+            <p>
+              One whole year with you! Terima kasih sudah menjadi bagian dari
+              perjalanan ini. Satu tahun mungkin baru permulaan, karena masih
+              ada begitu banyak cerita yang ingin aku tulis bersamamu. And if I
+              could choose again, I'd still choose you.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SONG SECTION -->
+      <section id="song">
+        <div class="section-label">A SONG FOR YOU</div>
+
+        <h2 class="section-title">Our Little Melody 🎵</h2>
+
+        <p class="description">
+          Kalau suatu hari kamu mendengar lagu ini, semoga kamu ingat aku.
+        </p>
+
+        <div class="song-card">
+          <div class="disc" id="disc">❤️</div>
+
+          <h3 style="color: #bd6689">A song for Devina</h3>
+
+          <p style="font-size: 12px; color: #ae8796">Our special soundtrack</p>
+
+          <audio controls id="audio" loop>
+            <source src="assets/audio/lagu.mp3" type="audio/mpeg" />
+          </audio>
+
+          <button class="primary-btn" onclick="playOurSong()" type="button">
+            Play our song ♡
+          </button>
+
+          <p style="font-size: 11px; color: #ae8796">
+            Lagu spesial untuk kita berdua ❤️
+          </p>
+        </div>
+      </section>
+
+      <!-- REASONS SECTION -->
+      <section id="reasons">
+        <div class="section-label">A THOUSAND LITTLE THINGS</div>
+
+        <h2 class="section-title">Why I Love You ❤️</h2>
+
+        <p class="description">
+          Sebenarnya ada banyak alasan. Tapi ini beberapa yang ingin aku
+          ceritakan.
+        </p>
+
+        <div class="reasons">
+          <div class="reason">
+            <span>🐱</span>
+            Karena senyummu selalu berhasil membuat hariku lebih baik.
+          </div>
+
+          <div class="reason">
+            <span>🧸</span>
+            Karena kamu punya cara sendiri untuk membuatku merasa nyaman.
+          </div>
+
+          <div class="reason">
+            <span>💗</span>
+            Karena kamu adalah seseorang yang selalu ingin aku ceritakan banyak
+            hal.
+          </div>
+
+          <div class="reason">
+            <span>✨</span>
+            Karena hal sederhana bersamamu terasa istimewa.
+          </div>
+
+          <div class="reason">
+            <span>🌸</span>
+            Karena aku suka caramu menjadi dirimu sendiri.
+          </div>
+
+          <div class="reason">
+            <span>🥺</span>
+            Karena kamu membuatku ingin menjadi lebih baik.
+          </div>
+
+          <div class="reason">
+            <span>☁️</span>
+            Karena ngobrol denganmu selalu jadi salah satu bagian favorit
+            hariku.
+          </div>
+
+          <div class="reason">
+            <span>💌</span>
+            Karena kamu membuat kata "rumah" terasa punya arti baru.
+          </div>
+
+          <div class="reason">
+            <span>🦋</span>
+            Karena sampai sekarang kamu masih bisa membuatku jatuh cinta.
+          </div>
+
+          <div class="reason">
+            <span>🌷</span>
+            Karena dari sekian banyak orang, aku bersyukur bisa berjalan bersama
+            kamu.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECRET SECTION -->
+      <section id="secret">
+        <div class="section-label">A LITTLE SURPRISE</div>
+
+        <h2 class="section-title">Something Just for You</h2>
+
+        <div class="secret-box">
+          <div style="font-size: 48px">🎁</div>
+
+          <h3 style="color: #bd6689; font-family: &quot;Playfair Display&quot;">
+            There's a secret message!
+          </h3>
+
+          <p style="font-size: 13px; line-height: 1.8">
+            Aku menyimpan sesuatu di sini.
+            <br />
+            Coba buka kalau kamu sudah siap.
+          </p>
+
+          <button class="primary-btn" onclick="revealSecret()" type="button">
+            Open your surprise ❤️
+          </button>
+
+          <div class="hidden" id="secretMessage">
+            <div style="font-size: 30px">💗</div>
+
+            <h3 style="color: #bd6689">A promise for you</h3>
+
+            <p>
+              Sayang, aku nggak bisa menjanjikan bahwa setiap hari akan selalu
+              sempurna. Tapi aku ingin berjanji untuk terus berusaha, terus
+              mendengarkan, terus belajar, dan terus memilih kamu. Aku ingin
+              menjadi seseorang yang bisa kamu andalkan, tempat kamu bercerita,
+              dan seseorang yang selalu mendukungmu. Thank you for being part of
+              my life. If I could choose again, I would still choose you. I love
+              you, more than words can say. ❤️
+            </p>
+
+            <div class="signature">&mdash; Azra ❤️</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CLOSING SECTION -->
+      <footer class="site-footer">
+        <div style="font-size: 40px">🌷 💗 🌷</div>
+
+        <h2 class="script">Happy Anniversary</h2>
+
+        <h3 style="font-family: &quot;Playfair Display&quot;; color: #bd6689">
+          Azra &amp; Devina
+        </h3>
+
+        <p style="font-size: 13px; line-height: 2; color: #a8798c">
+          11 November 2025 &mdash; Forever and always.
+          <br />
+          Thank you for making my world a little more beautiful.
+        </p>
+
+        <div style="font-size: 30px; margin-top: 20px">❤️</div>
+
+        <p style="font-size: 10px; color: #bd91a2">
+          Made with love, exclusively for Devina.
+        </p>
+      </footer>
+
+      <!-- MUSIC TOGGLE BUTTON -->
+      <button
+        class="music-toggle"
+        id="musicToggle"
+        onclick="toggleMusic()"
+        type="button"
+        aria-label="Play or pause music"
+      >
+        ♫
+      </button>
+
+      <!-- MEMORY LIGHTBOX -->
+      <div
+        class="memory-lightbox"
+        id="memoryLightbox"
+        role="dialog"
+        aria-label="Memory photo viewer"
+        aria-modal="true"
+        onclick="closeMemory(event)"
+      >
+        <div class="lightbox-inner">
+          <button
+            class="lightbox-close"
+            onclick="closeMemory()"
+            type="button"
+            aria-label="Close photo"
+          >
+            &times;
+          </button>
+
+          <img src="" alt="A memory of us" id="lightboxImage" />
+
+          <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
+      </div>
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
