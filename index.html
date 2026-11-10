@@ -197,8 +197,8 @@
 
           <!-- MEMORY VIDEO -->
           <div class="memory-card" style="max-width: 520px; margin: auto">
-            <video controls playsinline poster="assets/images/foto1.jpg">
-              <source src="assets/videos/video-kita.mp4" type="video/mp4" />
+            <video controls playsinline poster="assets/images/foto5.jpg">
+              <source src="assets/videos/video.mp4" type="video/mp4" />
 
               Browser kamu tidak mendukung video.
             </video>
@@ -245,11 +245,11 @@
             <h3>Our Longest Time Together 🌻</h3>
 
             <p>
-              Salah satu hari yang paling ingin aku simpan dalam ingatan.
-              Akhirnya kita punya waktu lebih banyak untuk bersama, bukan hanya
-              beberapa jam. Bisa menikmati waktu bersamamu tanpa harus
-              terburu-buru berpisah adalah kebahagiaan sederhana yang begitu
-              berarti bagiku.
+              Salah satu hari yang paling ingin aku simpan dalam ingatan. Di
+              Kuningan akhirnya kita punya waktu lebih banyak untuk bersama,
+              bukan hanya beberapa jam. Bisa menikmati waktu bersamamu tanpa
+              harus terburu-buru berpisah adalah kebahagiaan sederhana yang
+              begitu berarti bagiku.
             </p>
           </div>
 
@@ -298,23 +298,27 @@
         </p>
 
         <div class="song-card">
-          <div class="disc" id="disc">❤️</div>
+          <div class="disc" id="disc" aria-hidden="true">❤️</div>
 
-          <h3 style="color: #bd6689">A song for Devina</h3>
+          <h3 class="song-title">A song for Devina</h3>
 
-          <p style="font-size: 12px; color: #ae8796">Our special soundtrack</p>
+          <p class="song-subtitle">Our special soundtrack</p>
 
-          <audio controls id="audio" loop>
+          <!-- Hidden audio element controlled by JavaScript -->
+          <audio id="audio" loop preload="auto">
             <source src="assets/audio/lagu.mp3" type="audio/mpeg" />
           </audio>
 
-          <button class="primary-btn" onclick="playOurSong()" type="button">
+          <button
+            class="primary-btn"
+            id="playSongBtn"
+            onclick="playOurSong()"
+            type="button"
+          >
             Play our song ♡
           </button>
 
-          <p style="font-size: 11px; color: #ae8796">
-            Lagu spesial untuk kita berdua ❤️
-          </p>
+          <p class="song-caption">Lagu spesial untuk kita berdua ❤️</p>
         </div>
       </section>
 

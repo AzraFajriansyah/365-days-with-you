@@ -9,6 +9,7 @@ const website = document.getElementById("website");
 
 const openingAudio = document.getElementById("openingAudio");
 const audio = document.getElementById("audio");
+const memoryVideo = document.querySelector("#memories video");
 
 const disc = document.getElementById("disc");
 const musicToggle = document.getElementById("musicToggle");
@@ -151,6 +152,10 @@ function fadeVolume(player, targetVolume, duration = AUDIO_FADE_DURATION) {
 async function switchAudio(target) {
   if (!target) return;
 
+  if (memoryVideo && !memoryVideo.paused && !memoryVideo.ended) {
+    return;
+  }
+
   if (activeAudio === target && !target.paused) return;
 
   const switchId = ++audioSwitchId;
@@ -194,6 +199,7 @@ async function switchAudio(target) {
 
 function updateMusicUI() {
   const isPlaying = Boolean(activeAudio && !activeAudio.paused);
+  const isSongPlaying = audio === activeAudio && isPlaying;
 
   if (musicToggle) {
     musicToggle.textContent = isPlaying ? "♫" : "♪";
@@ -205,10 +211,15 @@ function updateMusicUI() {
   }
 
   if (disc) {
-    disc.classList.toggle(
-      "playing",
-      audio === activeAudio && isPlaying,
-    );
+    disc.classList.toggle("playing", isSongPlaying);
+  }
+
+  const playSongBtn = document.getElementById("playSongBtn");
+
+  if (playSongBtn) {
+    playSongBtn.textContent = isSongPlaying
+      ? "Pause our song ♡"
+      : "Play our song ♡";
   }
 }
 
@@ -241,11 +252,114 @@ async function toggleMusic() {
   updateMusicUI();
 }
 
+
 function playOurSong() {
+  if (!audio) return;
+
+  if (activeAudio === audio && !audio.paused) {
+    toggleMusic();
+    return;
+  }
+
   switchAudio(audio);
 }
 
-// Register audio events.
+/* ========================================
+   5.1 VIDEO & BACKGROUND MUSIC CONTROL
+======================================== */
+
+let musicBeforeVideo = null;
+let videoMusicPaused = false;
+let videoAudioActionId = 0;
+
+if (memoryVideo) {
+  // Pause background music when the video starts.
+  memoryVideo.addEventListener("play", async () => {
+    const actionId = ++videoAudioActionId;
+
+    if (!videoMusicPaused) {
+      musicBeforeVideo = activeAudio;
+    }
+
+    videoMusicPaused = true;
+
+    if (activeAudio && !activeAudio.paused) {
+      const player = activeAudio;
+
+      await fadeVolume(player, 0, 1000);
+
+      if (actionId !== videoAudioActionId) return;
+
+      player.pause();
+    }
+
+    updateMusicUI();
+  });
+
+  // Resume background music when the video is paused.
+  memoryVideo.addEventListener("pause", async () => {
+    if (memoryVideo.ended) return;
+
+    const actionId = ++videoAudioActionId;
+
+    videoMusicPaused = false;
+
+    const player = musicBeforeVideo;
+
+    if (!player) return;
+
+    musicBeforeVideo = null;
+    activeAudio = player;
+
+    try {
+      player.volume = 0;
+      await player.play();
+
+      if (
+        actionId !== videoAudioActionId ||
+        !memoryVideo.paused ||
+        memoryVideo.ended
+      ) {
+        player.pause();
+        return;
+      }
+
+      await fadeVolume(player, MUSIC_VOLUME, AUDIO_FADE_DURATION);
+    } catch (error) {
+      console.warn("Unable to resume background music:", error);
+    }
+
+    updateMusicUI();
+  });
+
+  // Resume background music when the video ends.
+  memoryVideo.addEventListener("ended", async () => {
+    const actionId = ++videoAudioActionId;
+
+    videoMusicPaused = false;
+
+    const player = musicBeforeVideo;
+
+    if (!player) return;
+
+    musicBeforeVideo = null;
+    activeAudio = player;
+
+    try {
+      player.volume = 0;
+      await player.play();
+
+      if (actionId !== videoAudioActionId) return;
+
+      await fadeVolume(player, MUSIC_VOLUME, AUDIO_FADE_DURATION);
+    } catch (error) {
+      console.warn("Unable to resume background music:", error);
+    }
+
+    updateMusicUI();
+  });
+}
+
 [openingAudio, audio].forEach((player) => {
   if (!player) return;
 
@@ -279,8 +393,7 @@ function updateCounter() {
   );
 
   const isAnniversary =
-    todayDate.getMonth() === 10 &&
-    todayDate.getDate() === 11;
+    todayDate.getMonth() === 10 && todayDate.getDate() === 11;
 
   daysElement.textContent = Math.max(0, elapsedDays).toLocaleString("id-ID");
 
@@ -424,10 +537,7 @@ function createParticles({
     particle.style.bottom = "-40px";
 
     if (className === "hug-particle") {
-      particle.style.setProperty(
-        "--drift",
-        `${randomBetween(-90, 90)}px`,
-      );
+      particle.style.setProperty("--drift", `${randomBetween(-90, 90)}px`);
 
       particle.style.setProperty(
         "--rotation",
@@ -444,10 +554,7 @@ function createParticles({
 
     fragment.appendChild(particle);
 
-    removeAfterAnimation(
-      particle,
-      (duration + stagger + 1) * 1000,
-    );
+    removeAfterAnimation(particle, (duration + stagger + 1) * 1000);
   }
 
   document.body.appendChild(fragment);
@@ -465,9 +572,7 @@ function sendHugs() {
   });
 
   // Animate the surprise button.
-  const button = document.querySelector(
-    "#secret .secret-box .primary-btn",
-  );
+  const button = document.querySelector("#secret .secret-box .primary-btn");
 
   if (button) {
     button.classList.remove("hug-click");
@@ -531,10 +636,7 @@ function initializeMemoryGallery() {
     image.tabIndex = 0;
     image.setAttribute("role", "button");
 
-    image.setAttribute(
-      "aria-label",
-      `View ${image.alt || "memory photo"}`,
-    );
+    image.setAttribute("aria-label", `View ${image.alt || "memory photo"}`);
 
     image.addEventListener("click", () => {
       openMemory(image);
@@ -555,10 +657,7 @@ function initializeKeyboardControls() {
       closeMemory();
     }
 
-    if (
-      lightbox?.classList.contains("open") &&
-      event.key === "Tab"
-    ) {
+    if (lightbox?.classList.contains("open") && event.key === "Tab") {
       const closeButton = lightbox.querySelector(".lightbox-close");
 
       if (closeButton) {
@@ -653,8 +752,7 @@ function initializeActiveNavigation() {
         if (!entry.isIntersecting) return;
 
         navLinks.forEach((link) => {
-          const active =
-            link.getAttribute("href") === `#${entry.target.id}`;
+          const active = link.getAttribute("href") === `#${entry.target.id}`;
 
           link.classList.toggle("active", active);
 

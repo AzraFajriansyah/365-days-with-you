@@ -606,7 +606,7 @@ section {
 .song-card {
   max-width: 450px;
   margin: auto;
-  padding: 28px 20px;
+  padding: 32px 20px;
   border: 1px solid rgba(234, 209, 218, 0.85);
   border-radius: 25px;
 
@@ -645,9 +645,28 @@ section {
   box-shadow: 0 15px 40px rgba(120, 56, 79, 0.25);
 }
 
-.song-card audio {
-  width: 100%;
+.song-title {
+  margin: 0;
+  color: var(--deep);
+  font-family: "Playfair Display", serif;
 }
+
+.song-subtitle {
+  margin: 8px 0 20px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.song-caption {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   10.1 Floating Music Toggle
+======================================== */
 
 .music-toggle {
   position: fixed;
